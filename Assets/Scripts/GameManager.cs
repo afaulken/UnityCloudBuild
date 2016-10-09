@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     private int tempScore;
     private int lost;
     public int realScore;
+    private int tempNumber;
 
     public float rotSpeed;
     public float ballSpeed;
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour {
 
         FullRing.transform.Rotate(0, 0, -rotSpeed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             ballMoving = true;
         }
@@ -103,19 +104,75 @@ public class GameManager : MonoBehaviour {
         if(colorID == 10)
         {
             BlueRing.transform.Translate(Vector3.forward * 20);
-        }else if(colorID == 20)
+
+            tempNumber = Random.Range(0, 3);
+            if (tempNumber == 0)
+            {
+                colorID = 1;
+            }
+            else if (tempNumber == 1)
+            {
+                colorID = 2;
+            }
+            else if (tempNumber == 2)
+            {
+                colorID = 3;
+            }
+        }
+        else if(colorID == 20)
         {
             GreenRing.transform.Translate(Vector3.forward * 20);
+
+            tempNumber = Random.Range(0, 3);
+            if (tempNumber == 0)
+            {
+                colorID = 0;
+            }
+            else if (tempNumber == 1)
+            {
+                colorID = 2;
+            }
+            else if (tempNumber == 2)
+            {
+                colorID = 3;
+            }
         }
         else if (colorID == 30)
         {
             PurpleRing.transform.Translate(Vector3.forward * 20);
+
+            tempNumber = Random.Range(0, 3);
+            if (tempNumber == 0)
+            {
+                colorID = 0;
+            }
+            else if (tempNumber == 1)
+            {
+                colorID = 1;
+            }
+            else if (tempNumber == 2)
+            {
+                colorID = 3;
+            }
         }
         else if (colorID == 40)
         {
             YellowRing.transform.Translate(Vector3.forward * 20);
+
+            tempNumber = Random.Range(0, 3);
+            if(tempNumber == 0)
+            {
+                colorID = 0;
+            }
+            else if (tempNumber == 1)
+            {
+                colorID = 1;
+            }
+            else if (tempNumber == 2)
+            {
+                colorID = 2;
+            }
         }
-        colorID = Random.Range(0, 4);
 
         if (rotSpeed >= 180)
         {
